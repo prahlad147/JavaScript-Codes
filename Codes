@@ -635,8 +635,7 @@ This will show the integer output between min (inclusive) to max (inclusive).
 
 
 
-Javascript Program to Check if a number is Positive, Negative, or Zero
-
+**********Javascript Program to Check if a number is Positive, Negative, or Zero**********
 
 
 You will be using the if...else if...else statement to write the program.
@@ -660,8 +659,6 @@ else if (number == 0) {
 else {
      console.log("The number is negative");
 }
-
-Run Code
 
 Output
 
@@ -690,8 +687,6 @@ if (number >= 0) {
     console.log("The number is negative");
 }
 
-Run Code
-
 Output
 
 Enter a number: 0
@@ -700,9 +695,14 @@ You entered number zero
 The above program works the same as Example 1. However, the second example uses the nested if...else statement.
 
 
-Javascript Program to Check if a Number is Odd or Even
 
 
+
+
+
+
+
+**********Javascript Program to Check if a Number is Odd or Even**********
 
 Even numbers are those numbers that are exactly divisible by 2.
 
@@ -728,8 +728,6 @@ else {
     console.log("The number is odd.");
 }
 
-Run Code
-
 Output
 
 Enter a number: 27
@@ -752,16 +750,20 @@ const result = (number % 2  == 0) ? "even" : "odd";
 // display the result
 console.log(`The number is ${result}.`);
 
-Run Code
-
 Output
 
 Enter a number: 5
 The number is odd.
 
-JavaScript Program to Find the Largest Among Three Numbers
 
 
+
+
+
+
+
+
+**********JavaScript Program to Find the Largest Among Three Numbers***********
 
 You can find the largest among three numbers using the if...else statement.
 Example 1: Largest Number Among Three Numbers
@@ -787,8 +789,6 @@ else {
 
 // display the result
 console.log("The largest number is " + largest);
-
-Run Code
 
 Output
 
@@ -818,8 +818,6 @@ const largest = Math.max(num1, num2, num3);
 // display the result
 console.log("The largest number is " + largest);
 
-Run Code
-
 Output
 
 Enter first number: 5
@@ -831,9 +829,15 @@ Math.max() returns the largest number among the provided numbers.
 
 You can use Math.min() function to find the smallest among the numbers.
 
-JavaScript Program to Check Prime Number
 
 
+
+
+
+
+
+
+************JavaScript Program to Check Prime Number************
 
 A prime number is a positive integer that is only divisible by 1 and itself. For example, 2, 3, 5, 7, 11 are the first few prime numbers.
 Example: Check Prime Number
@@ -872,8 +876,6 @@ else {
     console.log("The number is not a prime number.");
 }
 
-Run Code
-
 Output
 
 Enter a positive number: 23
@@ -893,10 +895,16 @@ The condition number % i == 0 checks if the number is divisible by numbers other
     The isPrime variable is used to store a boolean value: either true or false.
     The isPrime variable is set to false if the number is not a prime number.
     The isPrime variable remains true if the number is a prime number.
+    
+    
+    
+    
+    
+    
+    
+    
 
-JavaScript Program to Print All Prime Numbers in an Interval
-
-
+************JavaScript Program to Print All Prime Numbers in an Interval*************
 
 A prime number is a positive integer that is only divisible by 1 and itself. For example, 2, 3, 5, 7, 11 are the first few prime numbers.
 
@@ -929,8 +937,6 @@ for (let i = lowerNumber; i <= higherNumber; i++) {
     }
 }
 
-Run Code
-
 Output
 
 Enter lower number: 2
@@ -951,9 +957,16 @@ Two nested for loops are used in the above program.
     Inside the second loop, the value of i is divided by each number from 2 to value one less than i (i - 1).
     While dividing, if any number remainder results in 0, that number is not a prime number. So the variable flag is set to 1.
     Finally, all the numbers that have a flag 0 (not divisible by other numbers) are printed.
+    
+    
+    
+    
+    
+    
+    
 
 
-JavaScript Program to Find the Factorial of a Number
+**********JavaScript Program to Find the Factorial of a Number*************
 
 The factorial of a number is the product of all the numbers from 1 to that number. For example,
 
@@ -991,8 +1004,6 @@ else {
     console.log(`The factorial of ${number} is ${fact}.`);
 }
 
-Run Code
-
 Output
 
 Enter a positive integer: 5
@@ -1005,7 +1016,15 @@ In the above program, the user is prompted to enter an integer. Then if...else i
     When the user enters a positive integer, a for loop is used to iterate over 1 to the number entered by the user to find the factorial.
     Each number is multiplied and stored in the fact variable.
 
-JavaScript Program to Display the Multiplication Table
+
+
+
+
+
+
+
+
+************JavaScript Program to Display the Multiplication Table************
 
 
 Example 1: Multiplication Table Up to 10
@@ -1059,8 +1078,6 @@ for(let i = 1; i <= range; i++) {
     console.log(`${number} * ${i} = ${result}`);
 }
 
-Run Code
-
 Output
 
 Enter an integer: 7
@@ -1076,7 +1093,14 @@ In the above example, the user is prompted to enter an integer and also a range 
 The user enters an integer (here 7) and a range (here 5). Then a multiplication table is created using a for loop for that range.
 
 
-JavaScript Program to Print the Fibonacci Sequence
+
+
+
+
+
+
+
+**********JavaScript Program to Print the Fibonacci Sequence************
 
 A fibonacci sequence is written as:
 
