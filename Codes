@@ -3725,8 +3725,6 @@ in the code.`
 
 console.log(message);
 
-Run Code
-
 Output
 
 This is a long message
@@ -3737,6 +3735,264 @@ In the above example, the template literal ` ` is used to write multiline string
 
 The template literal was introduced in the newer version of JavaScript (ES6).
 
+JavaScript Program to Format Numbers as Currency Strings
+
+
+Example 1: Format Numbers as Currency String
+
+// program to format numbers as currency string
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+});
+
+formatter.format(2500);
+
+Run Code
+
+Output
+
+$2,500.00
+
+In the above program, we have used the Intl.NumberFormat object.
+
+The Intl.NumberFormat object enables language-sensitive number formatting.
+Example 2: Format Numbers as Currency String Using concatenation
+
+// program to format numbers as currency string
+
+const number = 1234.5678;
+
+const result = '$ ' + number.toFixed(2);
+
+console.log(result);
+
+Run Code
+
+Output
+
+$ 1234.57
+
+In the above example, the toFixed(2) method is used to round up the number to two decimal values.
+
+'$' is added to the number to convert it into a currency string.
+Example 3: Format Numbers as Currency String Using toLocaleString()
+
+// program to format numbers as currency string
+
+const result =  (2500).toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD'
+});
+
+console.log(result);
+
+Run Code
+
+Output
+
+$2,500.00
+
+The toLocaleString() method returns a string with a language-sensitive representation of that number.
+Example 4: Format Numbers as Currency String Using RegEx
+
+// program to format numbers as currency string
+
+const result = 1234.5678.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+console.warn('$ ' + result);
+
+Run Code
+
+Output
+
+$ 1,234.57
+
+In the above example, the replace() method is used with the RegEx pattern to replace the number to currency string.
+
+The toFixed(2) method is used to round up the number to two decimal values.
+
+
+JavaScript Program to Generate Random String
+
+
+Example 1: Generate Random Strings
+
+// program to generate random strings
+
+// declare all characters
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
+console.log(generateString(5));
+
+Run Code
+
+Output
+
+B5cgH
+
+In the above example, the Math.random() method is used to generate random characters from the specified characters (A-Z, a-z, 0-9).
+
+The for loop is used to loop through the number passed into the generateString() function. During each iteration, a random character is generated.
+Example 2: Generate Random Strings Using Built-in Methods
+
+// program to generate random strings
+
+const result = Math.random().toString(36).substring(2,7);
+console.log(result);
+
+Run Code
+
+Output
+
+gyjvo
+
+In the above example, built-in methods are used to generate random characters.
+
+The Math.random() method generates the random number between 0 and 1.
+
+In toString(36) method, 36 represents base 36. The toString(36) represents digits beyond 9 by letters.
+
+The substring(2, 7) method returns five characters.
+
+Note: In the above examples, the output varies each time because random characters are generated at every execution.
+
+
+JavaScript Program to Check if a String Starts With Another String
+
+
+Example 1: Using startsWith()
+
+// program to check if a string starts with another string
+
+const string = 'hello world';
+
+const toCheckString = 'he';
+
+if(string.startsWith(toCheckString)) {
+    console.warn('The string starts with "he".');
+}
+else {
+    console.warn(`The string does not starts with "he".`);
+}
+
+Run Code
+
+Output
+
+The string starts with "he".
+
+In the above program, the startsWith() method is used to determine if the string starts with 'he'. The startsWith() method checks if the string starts with the particular string.
+
+The if...else statement is used to check the condition.
+Example 2: Using lastIndexOf()
+
+// program to check if a string starts with another string
+
+const string = 'hello world';
+
+const toCheckString = 'he';
+
+let result = string.lastIndexOf(toCheckString, 0) === 0;
+if(result) {
+    console.warn('The string starts with "he".');
+}
+else {
+    console.warn(`The string does not starts with "he".`);
+}
+
+Run Code
+
+Output
+
+The string starts with "he".
+
+In the above program, the lastIndexOf() method is used to check if a string starts with another string.
+
+The lastIndexOf() method returns the index of the searched string (here searching from the first index).
+Example 3: Using RegEx
+
+// program to check if a string starts with another string
+
+const string = 'hello world';
+
+const pattern = /^he/;
+
+let result = pattern.test(string);
+
+if(result) {
+    console.warn('The string starts with "he".');
+}
+else {
+    console.warn(`The string does not starts with "he".`);
+}
+
+Run Code
+
+Output
+
+The string starts with "he".
+
+In the above program, the string is checked using the RegEx pattern and the test() method.
+
+/^ indicates the starting of the string.
+
+JavaScript Program to Trim a String
+
+
+Example 1: Trim a String
+
+// program to trim a string
+
+const string = '      Hello World       ';
+
+const result = string.trim();
+
+console.log(result);
+
+Run Code
+
+Output
+
+Hello World
+
+In the above example, the trim() method is used to trim a string.
+
+The trim() method removes white space from both sides of the string.
+Example 2: Trim a String Using RegEx
+
+// program to trim a string
+
+function trimString(x) {
+    let trimValue = x.replace(/^\s+|\s+$/g,'');
+    return trimValue;
+}
+
+const result = trimString('    Hello world    ');
+console.log(result);
+
+Run Code
+
+Output
+
+Hello World
+
+In the above program, the RegEx is used with the replace() method to trim the string.
+
+/^\s+|\s+$/g checks for whitespace at the beginning and end of the string.
+
+
+JavaScript Program to Convert Objects to Strings
 
 
 
