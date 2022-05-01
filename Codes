@@ -3995,6 +3995,3497 @@ In the above program, the RegEx is used with the replace() method to trim the st
 JavaScript Program to Convert Objects to Strings
 
 
+Example 1: Convert Object to String Using JSON.stringify()
+
+// program to convert an object to a string
+
+const person = {
+    name: 'Jack',
+    age: 27
+}
+
+const result =  JSON.stringify(person);
+
+console.log(result);
+console.log(typeof result);
+
+Run Code
+
+Output
+
+{"name":"Jack","age":27}
+string
+
+In the above example, the JSON.stringify() method is used to convert an object to a string.
+
+The typeof operator gives the data type of the result variable.
+Example 2: Convert Object to String Using String()
+
+// program to convert an object to a string
+
+const person = {
+    name: 'Jack',
+    age: 27
+}
+
+const result1 = String(person);
+const result2 = String(person['name']);
+
+console.log(result1);
+console.log(result2);
+
+console.log(typeof result1);
+
+Run Code
+
+Output
+
+[object Object]
+Jack
+string
+
+In the above example, the String() function converts the value of an object to a string.
+
+When using the String() function on an Object, the converted result will give [object Object].
+
+The typeof operator gives the data type of the result variable.
+
+JavaScript Program to Check Whether a String Contains a Substring
+
+
+Example 1: Check String with includes()
+
+// program to check if a string contains a substring
+
+// take input
+const str = prompt('Enter a string:');
+const checkString = prompt('Enter a string that you want to check:');
+
+// check if string contains a substring
+if(str.includes(checkString)) {
+    console.log(`The string contains ${checkString}`);
+} else {
+    console.log(`The string does not contain ${checkString}`);
+}
+
+Run Code
+
+Output
+
+Enter a string: JavaScript is fun
+Enter a string that you want to check: fun
+The string contains fun
+
+The includes() method is used with the if...else statement to check whether a string contains the characters of a specified string.
+
+Note: The includes() method is case-sensitive. Hence, fun and Fun are different.
+Example 2: Check String with indexOf()
+
+// program to check if a string contains a substring
+
+// take input
+const str = prompt('Enter a string:');
+const checkString = prompt('Enter a string that you want to check:');
+
+// check if string contains a substring
+if(str.indexOf(checkString) !== -1) {
+    console.log(`The string contains ${checkString}`);
+} else {
+    console.log(`The string does not contain ${checkString}`);
+}
+
+Run Code
+
+Output
+
+Enter a string: JavaScript is fun
+Enter a string that you want to check: fun
+The string contains fun
+
+In the above program, the indexOf() method is used with the if...else statement to check if a string contains a substring.
+
+The indexOf() method searches a string and returns the position of the first occurrence. When a substring cannot be found, it returns -1.
+
+Note: The indexOf() method is case sensitive.
+
+JavaScript Program to Compare Two Strings
+
+
+Example 1: Using toUpperCase()
+
+// js program to perform string comparison
+
+const string1 = 'JavaScript Program';
+const string2 = 'javascript program';
+
+// compare both strings
+const result = string1.toUpperCase() === string2.toUpperCase();
+
+if(result) {
+    console.log('The strings are similar.');
+} else {
+    console.log('The strings are not similar.');
+}
+
+Run Code
+
+Output
+
+The strings are similar.
+
+In the above program, two strings are compared. Here,
+
+    The toUpperCase() method converts all the string characters to uppercase.
+    === is used to check if both the strings are the same.
+    The if...else statement is used to display the result as per the condition.
+
+Note: You can also use the toLowerCase() method to convert all the strings to lowercase and perform the comparison.
+Example 2: JS String Comparison Using RegEx
+
+// program to perform string comparison
+
+const string1 = 'JavaScript Program';
+const string2 = 'javascript program';
+
+// create regex
+const pattern = new RegExp(string1, "gi");
+
+// compare the stings
+const result = pattern.test(string2)
+
+if(result) {
+    console.log('The strings are similar.');
+} else {
+    console.log('The strings are not similar.');
+}
+
+Run Code
+
+Output
+
+The strings are similar.
+
+In the above program, the RegEx is used with the test() method to perform case insensitive string comparison.
+
+In the RegEx pattern,  "g" syntax denotes global and "gi" syntax denotes case insensitive comparisons.
+Example 3: Using localeCompare()
+
+// program to perform case insensitive string comparison
+
+const string1 = 'JavaScript Program';
+const string2 = 'javascript program';
+
+const result = string1.localeCompare(string2, undefined, { sensitivity: 'base' });
+
+if(result == 0) {
+    console.log('The strings are similar.');
+} else {
+    console.log('The strings are not similar.');
+}
+
+Run Code
+
+Output
+
+The strings are similar.
+
+In the above program, the localeCompare() method is used to perform case insensitive string comparison.
+
+The localeCompare() method returns a number that indicates whether a reference string comes before, or after, or is the same as the given string.
+
+Here, { sensitivity: 'base' } treats A and a as the same.
+
+
+JavaScript Program to Encode a String to Base64
+
+
+
+Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation.
+Example 1: Encode a String to Base64 Using btoa()
+
+// program to encode a string to Base64
+// defining the string
+const str = "Learning JavaScript"; 
+
+// encoding the string
+const result = window.btoa(str);
+console.log(result);
+
+// decoding the string
+const result1 = window.atob(result);
+console.log(result1);
+
+Run Code
+
+Output
+
+TGVhcm5pbmcgSmF2YVNjcmlwdA==
+Learning JavaScript
+
+In the above example, the btoa() method is used to convert the string to Base64.
+
+The atob() method is used to convert the Base64 to a string.
+Example 2: Encode a String to Base64 Using Base64 Object
+
+// program to encode a string to Base64
+// create Base64 Object
+const Base64 = {
+// private property
+_keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+
+// public method for encoding
+encode : function (input) {
+    let output = "";
+    let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    let i = 0;
+
+    input = Base64._utf8_encode(input);
+
+    while (i < input.length) {
+
+        chr1 = input.charCodeAt(i++);
+        chr2 = input.charCodeAt(i++);
+        chr3 = input.charCodeAt(i++);
+
+        enc1 = chr1 >> 2;
+        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        enc4 = chr3 & 63;
+
+        if (isNaN(chr2)) {
+            enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+            enc4 = 64;
+        }
+
+        output = output +
+        Base64._keyStr.charAt(enc1) + Base64._keyStr.charAt(enc2) +
+        Base64._keyStr.charAt(enc3) + Base64._keyStr.charAt(enc4);
+
+    }
+
+    return output;
+},
+
+// public method for decoding
+decode : function (input) {
+    let output = "";
+    let chr1, chr2, chr3;
+    let enc1, enc2, enc3, enc4;
+    let i = 0;
+
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+    while (i < input.length) {
+
+        enc1 = Base64._keyStr.indexOf(input.charAt(i++));
+        enc2 = Base64._keyStr.indexOf(input.charAt(i++));
+        enc3 = Base64._keyStr.indexOf(input.charAt(i++));
+        enc4 = Base64._keyStr.indexOf(input.charAt(i++));
+
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+
+        output = output + String.fromCharCode(chr1);
+
+        if (enc3 != 64) {
+            output = output + String.fromCharCode(chr2);
+        }
+        if (enc4 != 64) {
+            output = output + String.fromCharCode(chr3);
+        }
+
+    }
+
+    output = Base64._utf8_decode(output);
+
+    return output;
+
+},
+
+// private method for UTF-8 encoding
+_utf8_encode : function (string) {
+    string = string.replace(/\r\n/g,"\n");
+    let utftext = "";
+
+    for (let n = 0; n < string.length; n++) {
+
+        let c = string.charCodeAt(n);
+
+        if (c < 128) {
+            utftext += String.fromCharCode(c);
+        }
+        else if((c > 127) && (c < 2048)) {
+            utftext += String.fromCharCode((c >> 6) | 192);
+            utftext += String.fromCharCode((c & 63) | 128);
+        }
+        else {
+            utftext += String.fromCharCode((c >> 12) | 224);
+            utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+            utftext += String.fromCharCode((c & 63) | 128);
+        }
+
+    }
+
+    return utftext;
+},
+
+// private method for UTF-8 decoding
+_utf8_decode : function (utftext) {
+    let string = "";
+    let i = 0;
+    let c = c1 = c2 = 0;
+
+    while ( i < utftext.length ) {
+
+        c = utftext.charCodeAt(i);
+
+        if (c < 128) {
+            string += String.fromCharCode(c);
+            i++;
+        }
+        else if((c > 191) && (c < 224)) {
+            c2 = utftext.charCodeAt(i+1);
+            string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+            i += 2;
+        }
+        else {
+            c2 = utftext.charCodeAt(i+1);
+            c3 = utftext.charCodeAt(i+2);
+            string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+            i += 3;
+        }
+
+    }
+    return string;
+}
+}
+
+// define the string
+const string = 'Learning JavaScript';
+
+// encode the String
+const encodedString = Base64.encode(string);
+console.log(encodedString);
+
+// decode the String
+const decodedString = Base64.decode(encodedString);
+console.log(decodedString);
+
+Run Code
+
+Output
+
+TGVhcm5pbmcgSmF2YVNjcmlwdA==
+Learning JavaScript.
+
+The encode() method encodes a string to Base64. The decode() method decodes the Base64 to a string.
+
+
+JavaScript Program to Replace all Instances of a Character in a String
+
+
+Example 1: Replace All Instances Of a Character Using Regex
+
+// program to replace all instances of a character in a string
+
+const string = 'Learning JavaScript Program';
+
+const result = string.replace(/a/g, "A");
+
+console.log(result);
+
+Run Code
+
+Output
+
+LeArning JAvAScript ProgrAm
+
+In the above example, the RegEx is used with the replace() method to replace all the instances of a character in a string.
+
+/g represents that the operation is carried out for all in instances of the string.
+Example 2: Replace All Instances Of Character Using Built-in Methods
+
+// program to replace all instances of character in a string
+
+const string = 'Learning JavaScript Program';
+
+const splitString = string.split('a');
+
+const result = splitString.join('A');
+
+console.log(result);
+
+Run Code
+
+Output
+
+LeArning JAvAScript ProgrAm
+
+In the above example, the built-in methods are used to replace all the occurrences of a character in a string.
+
+The split('a') method splits the string into an array.
+
+["Le", "rning J", "v", "Script Progr", "m"]
+
+The join('A') method joins all the array elements into a string by adding A between each array element.
+
+LeArning JAvAScript ProgrAm
+
+JavaScript Program to Replace All Line Breaks with <br>
+
+
+Example 1: Replace All Line Breaks Using RegEx
+
+// program to replace all line breaks in a string with <br>
+const string = `I am Learning JavaScript.
+JavaScript is fun.
+JavaScript is easy.`;
+
+const result = string.replace(/(\r\n|\r|\n)/g, '<br>');
+
+console.log(result);
+
+Run Code
+
+Output
+
+I am Learning JavaScript.<br>JavaScript is fun.<br>JavaScript is easy.
+
+In the above example:
+
+    The RegEx is used with the replace() method to replace all the line breaks in string with <br>.
+    The pattern /(\r\n|\r|\n)/ checks for line breaks.
+    The pattern /g checks across all the string occurrences.
+
+Example 2: Replace All Line Breaks Using Built-in Methods
+
+// program to replace all line breaks in a string with <br>
+const string = `I am Learning JavaScript.
+JavaScript is fun.
+JavaScript is easy.`;
+
+const result = string.split('\n').join('<br>');
+
+console.log(result);
+
+Run Code
+
+Output
+
+I am Learning JavaScript.<br>JavaScript is fun.<br>JavaScript is easy.
+
+In the above example, the built-in methods are used to replace all line breaks with <br>.
+
+The split('\n') splits the string into array elements by splitting on a line break.
+
+["I am Learning JavaScript.", "JavaScript is fun.", "JavaScript is easy."]
+
+The join('<br>') method joins the array by adding <br> between array elements.
+
+I am Learning JavaScript.<br>JavaScript is fun.<br>JavaScript is easy.
+
+JavaScript Program to Display Date and Time
+
+
+Example : Display Date and Time
+
+// program to display the date and time
+// get date and time
+const date = new Date(2017, 2, 12, 9, 25, 30);
+
+// get the date as a string
+const n = date.toDateString();
+
+// get the time as a string
+const time = date.toLocaleTimeString();
+
+// display date
+console.log('Date: ' + n);
+
+// display time
+console.log('Time: ' + time);
+
+Run Code
+
+Output
+
+Date: Sun Mar 12 2017
+Time: 9:25:30 AM
+
+In the above example, the new Date() constructor is used to create a date object. It gives the date and time according to the given arguments:
+
+const date = new Date(2017, 2, 12, 9, 25, 30);
+console.log(date); // Sun Mar 12 2017 09:25:30 GMT+0545 (+0545)
+
+Note: The six numbers in new Date() specify year, month, day, hour, minute, second respectively. Also, the month starts from 0. Hence, January is 0 and December is 11.
+
+The toDateString() method returns the date portion of a Date object.
+
+The toLocaleTimeString() method returns the time portion of a Date object.
+
+JavaScript Program to Check Leap Year
+
+
+
+A year is a leap year if the following conditions are satisfied:
+
+    The year is a multiple of 400.
+    The year is a multiple of 4 and not a multiple of 100.
+
+Example 1: Check Leap Year Using if...else
+
+// program to check leap year
+function checkLeapYear(year) {
+
+    //three conditions to find out the leap year
+    if ((0 == year % 4) && (0 != year % 100) || (0 == year % 400)) {
+        console.log(year + ' is a leap year');
+    } else {
+        console.log(year + ' is not a leap year');
+    }
+}
+
+// take input
+const year = prompt('Enter a year:');
+
+checkLeapYear(year);
+
+Run Code
+
+Output
+
+Enter a year: 2000
+2000 is a leap year
+
+In the above program, the three conditions are checked to determine if the year is a leap year or not.
+
+The % operator returns the remainder of the division.
+Example 2: Check Leap Year Using newDate()
+
+// program to check leap year
+function checkLeapYear(year) {
+
+    const leap = new Date(year, 1, 29).getDate() === 29;
+    if (leap) {
+        console.log(year + ' is a leap year');
+    } else {
+        console.log(year + ' is not a leap year');
+    }
+}
+
+// take input
+const year = prompt('Enter a year:');
+
+checkLeapYear(year);
+
+Run Code
+
+Output
+
+Enter a year: 2000
+2000 is a leap year
+
+In the above program, the month of February is checked if it contains 29 days.
+
+If a month of February contains 29 days, it will be a leap year.
+
+The new Date(2000, 1, 29) gives the date and time according to the specified arguments.
+
+Tue Feb 29 2000 00:00:00 GMT+0545 (+0545)
+
+The getDate() method returns the day of the month.
+
+
+JavaScript Program to Format the Date
+
+
+Example 1: Format The Date
+
+// program to format the date
+// get current  date
+let currentDate = new Date();
+
+// get the day from the date
+let day = currentDate.getDate();
+
+// get the month from the date
+// + 1 because month starts from 0
+let month = currentDate.getMonth() + 1;
+
+// get the year from the date
+let year = currentDate.getFullYear();
+
+// if day is less than 10, add 0 to make consistent format
+if (day < 10) {
+    day = '0' + day;
+}
+
+// if month is less than 10, add 0
+if (month < 10) {
+    month = '0' + month;
+}
+
+// display in various formats
+const formattedDate1 = month + '/' + day + '/' + year;
+console.log(formattedDate1);
+
+const formattedDate2 = month + '-' + day + '-' + year;
+console.log(formattedDate2);
+
+const formattedDate3 = day + '-' + month + '-' + year;
+console.log(formattedDate3);
+
+const formattedDate4 = day + '/' + month + '/' + year;
+console.log(formattedDate4);
+
+Run Code
+
+Output
+
+08/26/2020
+08-26-2020
+26-08-2020
+26/08/2020
+
+In the above example,
+
+1. The new Date() object gives the current date and time.
+
+let currentDate = new Date();
+console.log(currentDate);
+// Output
+// Wed Aug 26 2020 10:45:25 GMT+0545 (+0545)
+
+2. The getDate() method returns the day from the specified date.
+
+let day = currentDate.getDate();
+console.log(day); // 26
+
+3. The getMonth() method returns the month from the specified date.
+
+let month = currentDate.getMonth() + 1;
+console.log(month); // 8
+
+4. 1 is added to the getMonth() method because month starts from 0. Hence, January is 0, February is 1, and so on.
+
+5. The getFullYear() returns the year from the specified date.
+
+let year = currentDate.getFullYear();
+console.log(year); // 2020
+
+Then you can display the date in different formats.
+
+Javascript Program to Display Current Date
+
+
+Example : Display Current Date
+
+// program to display the date
+// get local machine date time
+const date = new Date();
+
+// get the date as a string
+const n = date.toDateString();
+
+// get the time as a string
+const time = date.toLocaleTimeString();
+
+// display date
+console.log('Date: ' + n);
+
+// display time
+console.log('Time: ' + time);
+
+Run Code
+
+Output
+
+Date: Wed Aug 26 2020
+Time: 1:13:12 PM
+
+In the above example, the new Date() constructor is used to create a date object. Then,
+
+1. The new Date() gives the current date and time.
+
+const date = new Date();
+console.log(date);
+// Sun Aug 23 2020 10:46:38 GMT+0545 (+0545)
+
+2. The toDateString() method returns the date portion of a date object.
+
+const n = date.toDateString();
+console.log(n); // Wed Aug 26 2020
+
+3. The toLocaleTimeString() method returns the time portion of a date object.
+
+const time = date.toLocaleTimeString();
+console.log(time); // 1:13:12 PM
+
+
+JavaScript Program to Compare The Value of Two Dates
+
+
+Example: Compare Value of Two Dates
+
+// program to compare value of two dates
+// create two dates
+const d1 = new Date();
+const d2 = new Date();
+
+// comparisons
+const compare1 = d1 < d2;
+console.log(compare1);
+
+const compare2 = d1 > d2;
+console.log(compare2);
+
+const compare3 = d1 <= d2;
+console.log(compare3);
+
+const compare4 = d1 >= d2;
+console.log(compare4);
+
+const compare5 = d1.getTime() === d2.getTime();
+console.log(compare5);
+
+const compare6 = d1.getTime() !== d2.getTime();
+console.log(compare6);
+
+Run Code
+
+Output
+
+false
+false
+true
+true
+true
+false
+
+In the above example, the new Date() constructor is used to create a date object.
+
+The new Date() gives the current date and time.
+
+const d1 = new Date();
+console.log(d1); // Fri Aug 28 2020 09:19:40 GMT+0545 (+0545)
+
+You can then directly compare these two dates using comparison operators >, <, <=, or >=.
+
+However, to use comparison operators like ==, !=, ===, or !==, you have to use date.getTime().
+
+The getTime() method returns the number of milliseconds from midnight of January 1, 1970 (EcmaScript epoch) to the specified date.
+
+const d1 = new Date().getTime();
+console.log(d1); // 1598585951699
+
+
+JavaScript Program to Create Countdown Timer
+
+
+Example: Create a Countdown Timer
+
+// program to create a countdown timer
+
+// time to countdown from (in milliseconds)
+let countDownDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+
+// countdown timer
+let x = setInterval(function() {
+
+    // get today's date and time in milliseconds
+    let now = new Date().getTime();
+
+    // find the interval between now and the countdown time
+    let timeLeft = countDownDate - now;
+
+    // time calculations for days, hours, minutes and seconds
+    const days = Math.floor( timeLeft/(1000*60*60*24) );
+    const hours = Math.floor( (timeLeft/(1000*60*60)) % 24 );
+    const minutes = Math.floor( (timeLeft/1000/60) % 60 );
+    const seconds = Math.floor( (timeLeft/1000) % 60 );
+
+    // display the result in the element with id="demo"
+    console.log(days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+    // clearing countdown when complete
+    if (timeLeft < 0) {
+        clearInterval(x);
+        console.log('CountDown Finished');
+    }
+    }, 2000);
+
+Run Code
+
+Output
+
+0d 23h 59m 57s 
+0d 23h 59m 55s 
+0d 23h 59m 53s 
+0d 23h 59m 51s 
+...
+
+In the above program, the setInterval() method is used to create a timer.
+
+The setInterval() method is executed at a given interval time (here, 2000 milliseconds).
+
+The new Date() gives the current date and time. For example,
+
+let d1 = new Date();
+console.log(time); // Fri Aug 28 2020 09:19:40 GMT+0545 (+0545)
+
+The getTime() method returns the number of milliseconds from midnight of January 1, 1970 (EcmaScript epoch) to the specified date (here, current date).
+
+The following code gives the next day's time in milliseconds.
+
+new Date().getTime() + 24 * 60 * 60 * 1000;
+
+Now, we can calculate time left using the following formula:
+
+let timeLeft = countDownDate - now;
+
+The remaining number of day is calculated using:
+
+    The time interval is divided by 1000 to determine the number of seconds, i.e. timeLeft / 1000
+    The time interval then is divided by 60 * 60 * 24 to determine the number of days remaining.
+    The Math.floor() function is used to round the number to a whole number.
+
+Similar methods are used for hours, minutes, and seconds.
+
+Note: You can also use a custom starting countdown time by passing a specific date.
+
+For example,
+
+let countDownDate = new Date("Aug 5, 2025 14:22:36").getTime();
+
+
+JavaScript Program to Remove Specific Item From an Array
+
+
+Example 1: Using For Loop
+
+// program to remove item from an array
+
+function removeItemFromArray(array, n) {
+    const newArray = [];
+
+    for ( let i = 0; i < array.length; i++) {
+        if(array[i] !== n) {
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
+
+const result = removeItemFromArray([1, 2, 3 , 4 , 5], 2);
+
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 3, 4, 5]
+
+In the above program, an item is removed from an array using a for loop.
+
+Here,
+
+    The for loop is used to loop through all the elements of an array.
+    While iterating through the elements of the array, if the item to remove does not match with the array element, that element is pushed to newArray.
+    The push() method adds the element to newArray.
+
+Example 2: Using Array.splice()
+
+// program to remove item from an array
+
+function removeItemFromArray(array, n) {
+    const index = array.indexOf(n);
+
+    // if the element is in the array, remove it
+    if(index > -1) {
+
+        // remove item
+        array.splice(index, 1);
+    }
+    return array;
+}
+
+const result = removeItemFromArray([1, 2, 3 , 4, 5], 2);
+
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 3, 4, 5]
+
+In the above program, an array and the element to be removed is passed to the custom removeItemFromArray() function.
+
+Here,
+
+const index = array.indexOf(2);
+console.log(index); // 1
+
+    The indexOf() method returns the index of the given element.
+    If the element is not in the array, indexOf() returns -1.
+    The if condition checks if the element to remove is in the array.
+    The splice() method is used to remove the element from an array.
+
+Note: The above program only works for arrays without duplicate elements.
+
+Only the first element of an array that matches is removed.
+
+For example,
+
+[1, 2, 3, 2, 5] results in [1, 3, 2, 5]
+
+JavaScript Program to Check if An Array Contains a Specified Value
+
+
+Example 1: Check Array Using includes()
+
+// program to check if an array contains a specified value
+
+const array = ['you', 'will', 'learn', 'javascript'];
+
+const hasValue = array.includes('javascript');
+
+// check the condition
+if(hasValue) {
+    console.log('Array contains a value.');
+} else {
+    console.log('Array does not contain a value.');
+}
+
+Run Code
+
+Output
+
+Array contains a value.
+
+In the above program, the includes() method is used to check if an array contains a specified value.
+
+    The includes() method returns true if the value exists in the array.
+    The if...else statement is used to display the result as per the condition.
+
+Example 2: Check Array Using indexOf()
+
+// program to check if an array contains a specified value
+
+const array = ['you', 'will', 'learn', 'javascript'];
+
+const hasValue = array.indexOf('javascript') !== -1;
+
+// check the condition
+if(hasValue) {
+    console.log('Array contains a value.');
+} else {
+    console.log('Array does not contain a value.');
+}
+
+Run Code
+
+Output
+
+Array contains a value.
+
+In the above program, the indexOf() method is used with the if...else statement to check if an array contains a specified value.
+
+The indexOf() method searches an array and returns the position of the first occurrence. If the value cannot be found, it returns -1.
+
+Note: Both includes() and indexOf() are case sensitive. Hence, J and j are different.
+
+
+JavaScript Program to Insert Item in an Array
+
+
+Example 1: Add Item to Array Using splice()
+
+// program to insert an item at a specific index into an array
+
+function insertElement() {
+    let array = [1, 2, 3, 4, 5];
+
+    // index to add to
+    let index = 3;
+
+    // element that you want to add
+    let element = 8;
+  
+    array.splice(index, 0, element);
+    console.log(array);
+}
+
+insertElement();
+
+Run Code
+
+Output
+
+[1, 2, 3, 8, 4, 5]
+
+In the above program, the splice() method is used to insert an item with a specific index into an array.
+
+The splice() method adds and/or removes an item.
+
+In the splice() method,
+
+    The first argument specifies the index where you want to insert an item.
+    The second argument (here 0) specifies the number of items to remove.
+    The third argument specifies the element that you want to add to an array.
+
+Example 2: Add Item to Array Using for Loop
+
+// program to insert an item at a specific index into an array
+
+function insertElement() {
+    let array = [1, 2, 3, 4];
+
+    // index to add to
+    let index = 3;
+
+    // element that you want to add
+    let element = 8;
+  
+    for (let i = array.length; i > index; i--) {
+
+        //shift the elements that are greater than index
+        array[i] = array[i-1];
+    }
+
+    // insert element at given index
+    array[index] = element;
+
+    console.log(array);
+}
+
+insertElement();
+
+Run Code
+
+Output
+
+[1, 2, 3, 8, 4]
+
+In the above program,
+
+    The for loop is used to iterate through the array elements.
+    The element is added to the given index.
+    All the elements whose index is greater than the given index are shifted one step to the right.
+
+JavaScript Program to Append an Object to An Array
+
+
+Example 1: Append Object to Array Using push()
+
+// program to append an object to an array
+
+function insertObject(arr, obj) {
+
+    // append object
+    arr.push(obj);
+    
+    console.log(arr);
+}
+
+// original array
+let array = [1, 2, 3];
+
+// object to add
+let object = {x: 12, y: 8};
+
+// call the function
+insertObject(array, object);
+
+Run Code
+
+Output
+
+[1, 2, 3, {x: 12, y: 8}]
+
+In the above program, the push() method is used to add an object to an array.
+
+The push() method adds an item to the end of an array.
+Example 2: Append Object to Array Using splice()
+
+// program to append an object to an array
+
+function insertObject(arr, obj) {
+
+   // find the last index
+    let index = arr.length;
+
+    // appending object to end of array
+    arr.splice(index, 0, object);
+    
+    console.log(arr);
+}
+
+// original array
+let array = [1, 2, 3];
+
+// object to add
+let object = {x: 12, y: 8};
+
+// call the function
+insertObject(array, object);
+
+Run Code
+
+Output
+
+[1, 2, 3, {x: 12, y: 8}]
+
+In the above program, the splice() method is used to add an object to an array.
+
+The splice() method adds and/or removes an item.
+
+In the splice() method,
+
+    The first argument represents the index where you want to insert an item.
+    The second argument represents the number of items to be removed (here, 0).
+    The third argument represents the element that you want to add to an array.
+
+Example 3: Append Object Using Spread Operator
+
+// program to append an object to an array
+
+function insertObject(arr, obj) {
+
+   // append object
+    arr = [...arr, object];
+    
+    console.log(arr);
+}
+
+// original array
+let array = [1, 2, 3];
+
+// object to add
+let object = {x: 12, y: 8};
+
+// call the function
+insertObject(array, object);
+
+Run Code
+
+Output
+
+[1, 2, 3, {x: 12, y: 8}]
+
+In the above program, the spread operator ... is used to add an object to an array.
+
+The spread syntax allows you to copy all the elements to an array. Then, the object is added to the end of the array.
+
+JavaScript Program to Check if An Object is An Array
+
+
+Example: Check Array Using Array.isArray()
+
+// program to check if an object is an array
+
+function checkObject(arr) {
+
+    // check if arr is array
+    const result = Array.isArray(arr);
+
+    if(result) {
+        console.log(`[${arr}] is an array.`);
+    }
+    else {
+        console.log(`${arr} is not an array.`);
+    }
+
+}
+
+const array = [1, 2, 3];
+
+// call the function
+checkObject(array);
+
+Run Code
+
+Output
+
+[1,2,3] is an array.
+
+In the above program, the Array.isArray() method is used to check if an object is an array.
+
+The Array.isArray() method returns true if an object is an array, otherwise returns false.
+
+Note: For an array, the typeof operator returns an object.
+
+For example,
+
+const arr = [1, 2, 3];
+console.log(typeof arr); // object
+
+JavaScript Program to Empty an Array
+
+
+Example 1: Empty Array by Substituting New Array
+
+// program to empty an array
+
+function emptyArray(arr) {
+
+    // substituting new array
+    arr = [];
+    
+    return arr;
+}
+
+const array = [1, 2 ,3];
+console.log(array);
+
+// call the function
+const result = emptyArray(array);
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 2, 3]
+[]
+
+In the above program, the value of array is substituted by a new empty array.
+Example 2: Empty Array Using splice()
+
+// program to append an object to an array
+
+function emptyArray(arr) {
+
+    // substituting new array
+    arr.splice(0, arr.length);
+    
+    return arr;
+}
+
+const array = [1, 2 ,3];
+console.log(array);
+
+// call the function
+const result = emptyArray(array);
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 2, 3]
+[]
+
+In the above program, the splice() method is used to remove all the elements of an array.
+
+In the splice() method,
+
+    The first argument is the index of an array to start removing an item from.
+    The second argument is the number of elements that you want to remove from the index element.
+
+Example 3: Empty Array by Setting Length 0
+
+// program to empty an array
+
+function emptyArray(arr) {
+
+    // setting array length to 0
+    arr.length = 0;
+    
+    return arr;
+}
+
+const array = [1, 2 ,3];
+console.log(array);
+
+// call the function
+const result = emptyArray(array);
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 2, 3]
+[]
+
+In the above program, the length property is used to empty the array.
+
+When setting array.length to 0, all the elements of the array are removed.
+
+
+JavaScript Program to Add Element to Start of an Array
+
+
+Example 1: Add Element to Array Using unshift()
+
+// program to add element to an array
+
+function addElement(arr) {
+
+    // adding new array element
+    arr.unshift(4);
+    
+    console.log(arr);
+}
+
+const array = [1, 2, 3];
+
+// calling the function
+// passing array argument
+addElement(array);
+
+Run Code
+
+Output
+
+[4, 1, 2, 3]
+
+In the above program, the new element is added to the array variable using the unshift() method.
+
+The unshift() method adds a new element at the beginning of an array.
+Example 2: Add Element to Array Using splice()
+
+// program to add element to an array
+
+function addElement(arr) {
+
+    // adding element to array
+    arr.splice(0, 0, 4);
+    
+    console.log(arr);
+}
+
+const array = [1, 2, 3];
+
+// calling the function
+addElement(array);
+
+Run Code
+
+Output
+
+[4, 1, 2, 3]
+
+In the above program, the splice() method is used to add a new element to an array.
+
+In the splice() method,
+
+    The first argument is the index of an array where you want to add an element.
+    The second argument is the number of elements that you want to remove from the index element.
+    The third argument is the element that you want to add to the array.
+
+Example 3: Add Element to Array Using Spread Operator
+
+// program to add element to an array
+
+function addElement(arr) {
+
+    // adding element to array
+    arr = [4, ...arr];
+    
+    console.log(arr);
+}
+
+const array = [1, 2, 3];
+
+// calling the function
+addElement(arr);
+
+Run Code
+
+Output
+
+[4, 1, 2, 3]
+
+In the above program, the spread operator ... is used to add a new element to the beginning of an array.
+
+arr = [4, ...arr]; takes first element as 4 and the rest elements are taken from array.
+Example 4: Add Element to Array Using concat()
+
+// program to add element to an array
+
+function addElement(arr) {
+
+    // adding element to array
+    arr = [4].concat(arr);
+    
+    console.log(arr);
+}
+
+const array = [1, 2, 3];
+
+// calling the function
+addElement(array);
+
+Run Code
+
+Output
+
+[4, 1, 2, 3]
+
+In the above program, the concat() method is used to add a new element to an array.
+
+The concat() method combines two arrays into one.
+
+
+JavaScript Program to Remove Duplicates From Array
+
+
+Example 1: Using indexOf() and push()
+
+// program to remove duplicate value from an array
+
+function getUnique(arr){
+    
+    let uniqueArr = [];
+    
+    // loop through array
+    for(let i of arr) {
+        if(uniqueArr.indexOf(i) === -1) {
+            uniqueArr.push(i);
+        }
+    }
+    console.log(uniqueArr);
+}
+
+const array = [1, 2, 3, 2, 3];
+
+// calling the function
+// passing array argument
+getUnique(array);
+
+Run Code
+
+Output
+
+[1, 2, 3]
+
+In the above program, the duplicate elements are removed from array.
+
+Here,
+
+    The for...of loop is used to loop through all the elements of an arr array.
+    The indexOf() method returns -1 if the element is not in the array. Hence, during each iteration, if the element equals -1, the element is added to uniqueArr using push().
+
+Example 2: Using Set
+
+// program to remove duplicate value from an array
+
+function getUnique(arr){
+
+    // removing duplicate
+    let uniqueArr = [...new Set(arr)];
+
+    console.log(uniqueArr);
+}
+
+const array = [1, 2, 3, 2, 3];
+
+// calling the function
+getUnique(array);
+
+Run Code
+
+Output
+
+[1, 2, 3]
+
+In the above program, Set is used to remove duplicate items from an array.
+
+A Set is a collection of unique values.
+
+Here,
+
+    The array is converted to Set and all the duplicate elements are automatically removed.
+    The spread syntax ... is used to include all the elements of the Set to a new array.
+
+
+JavaScript Program to Merge Two Arrays and Remove Duplicate Items 
+
+
+Example 1: Using concat() and for Loop
+
+// program to merge and remove duplicate value from an array
+
+function getUniqueAfterMerge(arr1, arr2){
+
+    // merge two arrays
+    let arr = arr1.concat(arr2);
+    let uniqueArr = [];
+
+    // loop through array
+    for(let i of arr) {
+        if(uniqueArr.indexOf(i) === -1) {
+            uniqueArr.push(i);
+        }
+    }
+    console.log(uniqueArr);
+}
+
+const array1 = [1, 2, 3];
+const array2 = [2, 3, 5]
+
+// calling the function
+// passing array argument
+getUniqueAfterMerge(array1, array2);
+
+Run Code
+
+Output
+
+[1, 2, 3, 5]
+
+In the above program, the two array elements are merged together and the duplicate elements are removed.
+
+Here,
+
+    The two arrays are merged using the concat() method.
+    The for...of loop is used to loop through all the elements of arr.
+    The indexOf() method returns -1 if the element is not in the array.
+
+Hence, during each iteration, if the element equals -1, the element is added to the uniqueArr array using the push() method.
+Example 2: Using Spread Syntax and Set
+
+// program to merge and remove duplicate value from an array
+
+function getUniqueAfterMerge(arr1, arr2){
+
+    // merge two arrays
+    let arr = [...arr1, ...arr2];
+
+    // removing duplicate
+    let uniqueArr = [...new Set(arr)];
+
+    console.log(uniqueArr);
+}
+
+const array1 = [1, 2, 3];
+const array2 = [2, 3, 5]
+
+// calling the function
+getUniqueAfterMerge(array1, array2);
+
+Run Code
+
+Output
+
+[1, 2, 3, 5]
+
+In the above program, two arrays are merged together and Set is used to remove duplicate items from an array.
+
+The Set is a collection of unique values.
+
+Here,
+
+    Two array elements are merged together using the spread syntax ...
+    The array is converted to Set and all the duplicate elements are automatically removed.
+    The spread syntax ... is then used to include all the elements of the set back to an array.
+
+
+JavaScript Program to Sort Array of Objects by Property Values
+
+
+Example 1: Sort Array by Property Name
+
+// program to sort array by property name
+
+function compareName(a, b) {
+
+    // converting to uppercase to have case-insensitive comparison
+    const name1 = a.name.toUpperCase();
+    const name2 = b.name.toUpperCase();
+
+    let comparison = 0;
+
+    if (name1 > name2) {
+        comparison = 1;
+    } else if (name1 < name2) {
+        comparison = -1;
+    }
+    return comparison;
+}
+
+const students = [{name: 'Sara', age:24},{name: 'John', age:24}, {name: 'Jack', age:25}];
+
+console.log(students.sort(compareName));
+
+Run Code
+
+Output
+
+[{name: "Jack", age: 25},
+{name: "John", age: 24},
+{name: "Sara", age: 24}]
+
+In the above program, the sort() method is used to sort an array by the name property of its object elements.
+
+The sort() method sorts its elements according to the values returned by a custom sort function (compareName in this case).
+
+Here,
+
+    The property names are changed to uppercase using the toUpperCase() method.
+    If comparing two names results in 1, then their order is changed.
+    If comparing two names results in -1 or 0, then their order is left as is.
+
+Example 2: Sort Array by Property Age
+
+// program to sort array by property name
+
+function compareAge(a, b) {
+
+    return a.age - b.age;
+}
+
+const students = [{name: 'Sara', age:24},{name: 'John', age:22}, {name: 'Jack', age:27}];
+
+console.log(students.sort(compareAge));
+
+Run Code
+
+Output
+
+[{name: "John", age: 22},
+{name: "Sara", age: 24},
+{name: "Jack", age: 27}]
+
+In the above program, the sort() method is used to sort an array element by the age property.
+
+To compare the age property of two objects, we can simply subtract them.
+
+    If their difference is a negative value, their order is changed.
+    If their difference is a positive value, the order is left as is.
+
+JavaScript Program to Create Two Dimensional Array
+
+
+Example: Two Dimensional Array Using for Loop
+
+// program to create a two dimensional array
+
+function twoDimensionArray(a, b) {
+    let arr = [];
+
+    // creating two dimensional array
+    for (let i = 0; i< a; i++) {
+        for(let j = 0; j< b; j++) {
+            arr[i] = [];
+        }
+    }
+
+    // inserting elements to array
+    for (let i = 0; i< a; i++) {
+        for(let j = 0; j< b; j++) {
+            arr[i][j] = j;
+        }
+    }
+    return arr;
+}
+
+const x = 2;
+const y = 3;
+
+const result = twoDimensionArray(x, y);
+console.log(result);
+
+Run Code
+
+Output
+
+[[0, 1, 2], [0, 1, 2]]
+
+In the above program, the first argument of the twoDimensionArray() function represents the number of array elements, and the second argument represents the number of array elements inside of each array element.
+
+The first for loop is used to create a two dimensional array. [[], []]
+
+The second for loop iterates over each array element and inserts the elements inside of an array element.
+
+When i = 0, the elements are inserted to the first array element [[0, 1, 2], []].
+
+When i = 1, the elements are inserted to the second array element [[0, 1, 2], [0, 1, 2]].
+
+JavaScript Program to Extract Given Property Values from Objects as Array
+
+
+Example 1: Extract Value Using map()
+
+// program to extract value as an array from an array of objects
+
+function extractValue(arr, prop) {
+
+    // extract value from property
+    let extractedValue = arr.map(item => item[prop]);
+
+    return extractedValue;
+
+}
+
+const objArray = [{a: 1, b: 2}, {a: 4, b: 5}, {a: 8, b: 9}];
+
+// passing an array of objects and property 'a' to extract
+const result = extractValue(objArray, 'a');
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 4, 8]
+
+In the above program, the property's value of key a is extracted from each object of an array.
+
+The map() method is used to iterate through all the elements of an array and extract property values of key a.
+
+Note: You could also use a regular function instead of an arrow function.
+
+let extractedValue = arr.map(function(item) {return item[prop]});
+
+Example 2: Extract Value Using for Loop
+
+// program to extract value as an array from an array of objects
+
+function extractValue(arr, prop) {
+
+    let extractedValue = [];
+
+    for (let i=0; i < arr.length ; ++i) {
+
+        // extract value from property
+        extractedValue.push(arr[i][prop]);
+    }
+    return extractedValue;
+}
+
+const objArray = [{a: 1, b: 2}, {a: 4, b: 5}, {a: 8, b: 9}];
+
+// passing an array of objects and property 'a' to extract
+const result = extractValue(objArray, 'a');
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 4, 8]
+
+In the above program, the property value of key a is extracted from each object of an array.
+
+    Initially, the extractedValue array is empty.
+    The for loop is used to iterate through all the elements of an array.
+    During each iteration, the value of property a is pushed to the extractedValue array.
+
+JavaScript Program to Compare Elements of Two Arrays
+
+
+Example 1 : Compare Arrays Using JSON.stringify()
+
+// program to compare two arrays
+
+function compareArrays(arr1, arr2) {
+
+    // compare arrays
+    const result = JSON.stringify(arr1) == JSON.stringify(arr2)
+
+    // if result is true
+    if(result) {
+        console.log('The arrays have the same elements.');
+    }
+    else {
+        console.log('The arrays have different elements.');
+    }
+
+}
+
+const array1 = [1, 3, 5, 8];
+const array2 = [1, 3, 5, 8];
+
+compareArrays(array1, array2);
+
+Run Code
+
+Output
+
+The arrays have the same elements.
+
+The JSON.stringify() method converts an array into JSON string.
+
+JSON.stringify([1, 3, 5, 8]); // "[1,3,5,8]"
+
+Then, the two array strings are compared using ==.
+Example 2: Compare Arrays using for Loop
+
+// program to extract value as an array from an array of objects
+
+function compareArrays(arr1, arr2) {
+
+    // check the length
+    if(arr1.length != arr2.length) {
+        return false;
+    } 
+    else { 
+        let result = false;
+        
+        // comparing each element of array 
+        for(let i=0; i<arr1.length; i++) {
+
+            if(arr1[i] != arr2[i]) {
+                return false;
+            }
+            else {
+                result = true;
+            }
+
+        }
+        return result;
+        
+  }
+
+}
+
+const array1 = [1, 3, 5, 8];
+const array2 = [1, 3, 5, 8];
+
+const result = compareArrays(array1, array2);
+
+// if result is true
+if(result) {
+    console.log('The arrays have the same elements.');
+}
+else {
+    console.log('The arrays have different elements.');
+}
+
+Run Code
+
+Output
+
+The arrays have the same elements.
+
+In the above program,
+
+The length of the array elements are compared using the length property. If both arrays have different lengths, false is returned.
+
+Else,
+
+    The for loop is used to iterate through all the elements of the first array.
+    During each iteration, elements of the first array are compared to corresponding elements of the second array.
+
+    arr1[i] != arr2[i]
+
+    If the corresponding array elements of both arrays are not equal, false is returned and the loop terminates.
+    If all elements are equal, true is returned.
+
+Note: The above program does not work if the array element contains objects.
+
+For example,
+
+array1 = [1, {a : 2}, 3, 5];
+
+JavaScript Program to Get Random Item From an Array
+
+
+Example: Get Random Item From an Array
+
+// program to get a random item from an array
+
+function getRandomItem(arr) {
+
+    // get random index value
+    const randomIndex = Math.floor(Math.random() * arr.length);
+
+    // get random item
+    const item = arr[randomIndex];
+
+    return item;
+}
+
+const array = [1, 'hello', 5, 8];
+
+const result = getRandomItem(array);
+console.log(result);
+
+Run Code
+
+Output
+
+'hello'
+
+In the above program, a random item from an array is accessed.
+
+    A random number between 0 to array.length is generated using the Math.random() method.
+    The Math.floor() returns the nearest integer value generated by Math.random().
+    This random index is then used to access a random array element.
+
+
+JavaScript Program To Perform Intersection Between Two Arrays
+
+
+Example 1: Perform Intersection Using Set
+
+// program to perform intersection between two arrays using Set
+// intersection contains the elements of array1 that are also in array2
+
+function performIntersection(arr1, arr2) {
+
+    // converting into Set
+    const setA = new Set(arr1);
+    const setB = new Set(arr2);
+
+    let intersectionResult = [];
+
+    for (let i of setB) {
+    
+        if (setA.has(i)) {
+            intersectionResult.push(i);
+        }
+        
+    }
+    
+    return intersectionResult;
+
+}
+
+const array1 = [1, 2, 3, 5, 9];
+const array2 = [1, 3, 5, 8];
+
+const result = performIntersection(array1, array2);
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 3, 5]
+
+In the above program, an intersection is performed between array1 and array2.
+
+    The array elements are converted into Set elements using the new Set() constructor.
+    The for...of loop is used to iterate over the second Set elements.
+    The has() method is used to check if the element is in the first Set.
+    If the element is present in the first Set, that element is added to the intersectionResult array using the push() method.
+
+Example 2: Perform Intersection Using filter() Method
+
+// program to perform intersection between two arrays
+
+function performIntersection(arr1, arr2) {
+
+    const intersectionResult = arr1.filter(x => arr2.indexOf(x) !== -1);
+ 
+    return intersectionResult;
+
+}
+
+const array1 = [1, 2, 3, 5, 9];
+const array2 = [1, 3, 5, 8];
+
+const result = performIntersection(array1, array2);
+console.log(result);
+
+Run Code
+
+Output
+
+[1, 3, 5]
+
+In the above program, an intersection is performed between two arrays using the filter() method. The filter method iterates over an array and returns the array elements that pass the given condition.
+
+    Each element of the first array is compared with the second array using the indexOf() method.
+    The arr2.indexOf(x) method searches arr2 and returns the position of the first occurrence of arr1. If the value cannot be found, it returns -1.
+    All the elements that are in both arrays are returned by the filter() method.
+
+Note: You could also use the includes() method to check if the array elements are in both arrays.
+
+const intersectionResult = arr1.filter(x => arr2.includes(x))
+
+
+
+JavaScript Program to Split Array into Smaller Chunks
+
+
+Example 1: Split Array Using slice()
+
+// program to split array into smaller chunks
+
+function splitIntoChunk(arr, chunk) {
+
+    for (i=0; i < arr.length; i += chunk) {
+
+        let tempArray;
+        tempArray = arr.slice(i, i + chunk);
+        console.log(tempArray);
+    }
+
+}
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+const chunk = 2;
+splitIntoChunk(array, chunk);
+
+Run Code
+
+Output
+
+[1, 2]
+[3, 4]
+[5, 6]
+[7, 8]
+
+In the above program, the for loop is used with the slice() method to split an array into smaller chunks of array.
+
+The for loop iterates through the elements of an array. During each iteration, the value of i is increased by chunk value (here 2).
+
+The slice() method extracts elements from an array where:
+
+    The first argument specifies the starting index.
+    The second argument specifies the ending index.
+
+Example 2: Split Array Using splice()
+
+// program to split array into smaller chunks
+
+function splitIntoChunk(arr, chunk) {
+
+    while(arr.length > 0) {
+
+        let tempArray;
+        tempArray = arr.splice(0, chunk);
+        console.log(tempArray);
+    }
+}
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8];
+const chunk = 2;
+splitIntoChunk(array, chunk);
+
+Run Code
+
+Output
+
+[1, 2]
+[3, 4]
+[5, 6]
+[7, 8]
+
+In the above program, the while loop is used with the splice() method to split an array into smaller chunks of an array.
+
+In the splice() method,
+
+    The first argument specifies the index where you want to split an item.
+    The second argument (here 2) specifies the number of items to split.
+
+The while loop is used to iterate over the array until the array is empty.
+
+JavaScript Program to Include a JS file in Another JS file
+
+
+Example: Using import/export
+
+Let's create a file named module.js (filename can be anything) with the following content:
+
+// program to include JS file into another JS file
+
+const message = 'hello world';
+
+const number = 10;
+
+function multiplyNumbers(a, b) {
+    return a * b;
+}
+
+// exporting variables and function
+export { message, number, multiplyNumbers };
+
+In order to include these variables and functions in another file, say main.js, you can use the import keyword as:
+
+// import the variables and function from module.js
+import { message, number, multiplyNumbers } from './modules.js';
+
+console.log(message); // hello world
+
+console.log(number); // 10
+
+console.log(multiplyNumbers(3, 4)); // 12
+console.log(multiplyNumbers(5, 8)); // 40
+
+To include another file, you have to export the code that you want to use in another file using the export statement. For example,
+
+export { message, number, multiplyNumbers };
+
+You could also do individual export. For example,
+
+export const message = 'hello world';
+
+export const number = 10;
+
+To include code from another file, you have to use the import statement and import using the file path. For example,
+
+// importing codes from module file
+import { message, number, multiplyNumbers } from './modules.js';
+
+Then, you can use these codes as they are a part of the same file.
+
+This helps in writing cleaner, maintainable, and modular code.
+
+
+JavaScript Program to Get File Extension 
+
+
+Example 1: Using split() and pop()
+
+// program to get the file extension
+
+function getFileExtension(filename){
+
+    // get file extension
+    const extension = filename.split('.').pop();
+    return extension;
+}
+
+// passing the filename
+const result1 = getFileExtension('module.js');
+console.log(result1);
+
+const result2 = getFileExtension('module.txt');
+console.log(result2);
+
+Run Code
+
+Output
+
+js
+txt
+
+In the above program, the extension of the filename is extracted using the split() method and the pop() method.
+
+    The filename is split into individual array elements using the split() method.
+    Here, filename.split('.') gives ["module", "js"] by splitting the string.
+    The last array element, which is the extension, is returned using the pop() method.
+
+Example 2: Using substring() and lastIndexOf()
+
+// program to get the file extension
+
+function getFileExtension(filename){
+    // get file extension
+    const extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length);
+    return extension;
+}
+
+const result1 = getFileExtension('module.js');
+console.log(result1);
+
+const result2 = getFileExtension('test.txt');
+console.log(result2);
+
+Run Code
+
+Output
+
+js
+txt
+
+In the above program, the extension of the filename is extracted using the substring() method and the lastIndexOf() method.
+
+    filename.lastIndexOf('.') + 1 returns the last position of . in the filename.
+    1 is added because the position count starts from 0.
+    The filename.length property returns the length of the string.
+    substring(filename.lastIndexOf('.') + 1, filename.length) method returns characters between the given indexes. For example, 'module.js'.substring(8, 10) returns js.
+    The OR || operator is used to return the original string if there is no . in the filename.
+
+JavaScript Program To Check If A Variable Is undefined or null
+
+
+Example 1: Check undefined or null
+
+// program to check if a variable is undefined or null
+
+function checkVariable(variable) {
+
+    if(variable == null) {
+        console.log('The variable is undefined or null');
+    }
+    else {
+       console.log('The variable is neither undefined nor null');
+    }
+}
+
+let newVariable;
+
+checkVariable(5);
+checkVariable('hello');
+checkVariable(null);
+checkVariable(newVariable);
+
+Run Code
+
+Output
+
+The variable is neither undefined nor null
+The variable is neither undefined nor null
+The variable is undefined or null
+The variable is undefined or null
+
+In the above program, a variable is checked if it is equivalent to null. The null with == checks for both null and undefined values. This is because null == undefined evaluates to true.
+
+The following code:
+
+if(variable == null) { ... }
+
+is equivalent to
+
+if (variable === undefined || variable === null) { ... }
+
+Example 2: using typeof
+
+// program to check if a variable is undefined or null
+
+function checkVariable(variable) {
+
+    if( typeof variable === 'undefined' || variable === null ) {
+        console.log('The variable is undefined or null');
+    }
+    else {
+       console.log('The variable is neither undefined nor null');
+    }
+}
+
+let newVariable;
+
+checkVariable(5);
+checkVariable('hello');
+checkVariable(null);
+checkVariable(newVariable);
+
+Run Code
+
+Output
+
+The variable is neither undefined nor null
+The variable is neither undefined nor null
+The variable is undefined or null
+The variable is undefined or null
+
+The typeof operator for undefined value returns undefined. Hence, you can check the undefined value using typeof operator. Also, null values are checked using the === operator.
+
+Note: We cannot use the typeof operator for null as it returns object.
+
+JavaScript Program to Set a Default Parameter Value For a Function
+
+
+
+The syntax to set the default parameter value for a function is:
+
+function functionName(param1=default1, param2=default2, ...) {
+    // function body
+}
+
+Example 1: Set Default Parameter Value For a Function
+
+// program to set default parameter value
+
+function sum(x = 3, y = 5) {
+
+    // return sum
+    return x + y;
+}
+
+console.log(sum(5, 15));
+console.log(sum(7));
+console.log(sum());
+
+Run Code
+
+Output
+
+20
+12
+8
+
+In the above example, the default value of x is 3 and the default value of y is 5.
+
+    sum(5, 15) - When both arguments are passed, x takes 5 and y takes 15.
+    sum(7) - When 7 is passed to the sum() function, x takes 7 and y takes the default value 5.
+    sum() - When no argument is passed to the sum() function, x takes the default value 3 and y takes the default value 5.
+
+Example 2: Using Previous Parameter in Another Parameter
+
+// using previous parameter in default value expression
+
+let calculate = function(x = 15, y = x + 2) {
+    return x + y;
+}
+
+const result1 = calculate(10);
+console.log(result1);
+
+const result2 = calculate();
+console.log(result2);
+
+Run Code
+
+Output
+
+22
+32
+
+You can also pass a parameter as the default value for another parameter.
+
+In the above program,
+
+    When 10 is passed to the calculate() function, x becomes 10, and y becomes 12 (the sum function returns 22).
+    When no value is passed to the calculate() function, x becomes 15, and y becomes 17 (the sum function returns 32).
+
+
+JavaScript Program to Illustrate Different Set Operations
+
+
+Example 1: Set Union Operation
+
+// perform union operation
+// contain elements of both sets
+function union(a, b) {
+    let unionSet = new Set(a);
+    for (let i of b) {
+        unionSet.add(i);
+    }
+    return unionSet
+}
+
+// two sets of fruits
+const setA = new Set(['apple', 'mango', 'orange']);
+const setB = new Set(['grapes', 'apple', 'banana']);
+
+const result = union(setA, setB);
+
+console.log(result);
+
+Run Code
+
+Output
+
+Set {"apple", "mango", "orange", "grapes", "banana"}
+
+The set union operation combines elements of both sets into one.
+
+A new set unionSet is created using new Set(). The unionSet variable contains all the values of setA. Then, the for...of loop is used to iterate through all the elements of setB and add them to unionSet using the add() method.
+
+The set does not contain duplicate values. Hence, if the set contains the same value, the latter value is discarded.
+Example 2: Set Intersection Operation
+
+// perform intersection operation
+// elements of set a that are also in set b
+function intersection(setA, setB) {
+    let intersectionSet = new Set();
+
+    for (let i of setB) {
+        if (setA.has(i)) {
+            intersectionSet.add(i);
+        }
+    }
+    return intersectionSet;
+}
+
+// two sets of fruits
+const setA = new Set(['apple', 'mango', 'orange']);
+const setB = new Set(['grapes', 'apple', 'banana']);
+
+const result = intersection(setA, setB);
+
+console.log(result);
+
+Run Code
+
+Output
+
+Set {"apple"}
+
+The set intersection operation represents elements that are present in both setA and setB.
+
+A new set intersectionSet is created using new Set(). Then, the for...of loop is used to iterate through the setB. For every element that is present in both setA and setB, they are added to the intersection set.
+Example 3: Set Difference Operation
+
+// perform difference operation
+// elements of set a that are not in set b
+function difference(setA, setB) {
+    let differenceSet = new Set(setA)
+    for (let i of setB) {
+        differenceSet.delete(i)
+    }
+    return differenceSet
+}
+
+// two sets of fruits
+const setA = new Set(['apple', 'mango', 'orange']);
+const setB = new Set(['grapes', 'apple', 'banana']);
+
+const result = difference(setA, setB);
+
+console.log(result);
+
+Run Code
+
+Output
+
+Set {"mango", "orange"}
+
+The set difference operation represents elements that are present in one set and not in another set.
+
+The differenceSet contains all the elements of setA. Then, the for...of loop is used to iterate through all the elements of setB. If the element that is present in setB is also available in setA, that element is deleted using delete() method.
+Example 4: Set Subset Operation
+
+// perform subset operation
+// true if all elements of set b is in set a
+function subset(setA, setB) {
+    for (let i of setB) {
+        if (!setA.has(i)) {
+            return false
+        }
+    }
+    return true
+}
+
+// two sets of fruits
+const setA = new Set(['apple', 'mango', 'orange']);
+const setB = new Set(['apple', 'orange']);
+
+const result = subset(setA, setB);
+
+console.log(result);
+
+Run Code
+
+Output
+
+true
+
+The set subset operation returns true if all the elements of setB are in setA.
+
+The for...of loop is used to loop through the elements of setB. If any element that is present is setB is not present in setA, false is returned.
+
+
+Javascript Program to Generate a Random Number Between Two Numbers
+
+
+
+If you want to find a random integer in between min (inclusive) to max (inclusive), you can use the following formula:
+
+Math.floor(Math.random() * (max - min + 1)) + min
+
+Example: Integer Value Between Two Numbers
+
+// input from the user
+const min = parseInt(prompt("Enter a min value: "));
+const max = parseInt(prompt("Enter a max value: "));
+
+// generating a random number
+const a = Math.floor(Math.random() * (max - min + 1)) + min;
+
+// display a random number
+console.log(`Random value between ${min} and ${max} is ${a}`);
+
+Run Code
+
+Output
+
+Enter a min value: 1
+Enter a min value: 50
+Random value between 1 and 50 is 47
+
+In JavaScript, you can generate a random number with the Math.random() function.
+
+Math.random() returns a random floating-point number ranging from 0 to less than 1 (inclusive of 0 and exclusive of 1)
+
+The above program will show an integer output between min (inclusive) to max (inclusive).
+
+First, the minimum and maximum values are taken as input from the user. Then the Math.random() method is used to get the random number from the passed value.
+
+The Math.floor() returns the nearest integer value.
+
+
+JavaScript Program To Get The Current URL
+
+In this example, you will learn to write a JavaScript program that will get the current URL.
+Example: Get The Current URL
+
+// program to get the URL
+
+const url1 = window.location.href;
+const url2 = document.URL;
+console.log(url1);
+console.log(url2);
+
+Output
+
+https://www.google.com/
+https://www.google.com/
+
+In the above program, window.location.href property and document.URL property are used to get the URL of the current page.
+
+Both the window.location.href and the document.URL properties return the URL of the current page.
+
+JavaScript Program to Validate An Email Address
+
+
+Example: Using Regex
+
+// program to validate an email address
+
+function validateEmail(email_id) {
+    const regex_pattern =      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    if (regex_pattern.test(email_id)) {
+        console.log('The email address is valid');
+    }
+    else {
+        console.log('The email address is not valid');
+    }
+}
+
+validateEmail('abc123@gmail.com');
+validateEmail('hello@com');
+
+Run Code
+
+Output
+
+The email address is valid
+The email address is not valid
+
+In the above program, the regular expression pattern
+
+/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+checks if an email address is valid or not.
+
+The test() method returns true if there is a match in the string with the regex pattern.
+
+The regular expression (regex) describes a sequence of characters used for defining a search pattern.
+
+To learn more about the regex, visit JavaScript Regular Expression.
+
+JavaScript Program to Check If a Variable is of Function Type
+
+
+Example 1: Using instanceof Operator
+
+// program to check if a variable is of function type
+
+function testVariable(variable) {
+      
+    if(variable instanceof Function) {
+        console.log('The variable is of function type');
+    }
+    else {
+        console.log('The variable is not of function type');
+    }
+}
+
+const count = true;
+const x = function() {
+    console.log('hello')
+};
+
+testVariable(count);
+testVariable(x);
+
+Run Code
+
+Output
+
+The variable is not of function type
+The variable is of function type
+
+In the above program, the instanceof operator is used to check the type of variable.
+Example 2: Using typeof Operator
+
+// program to check if a variable is of function type
+
+function testVariable(variable) {
+      
+    if(typeof variable === 'function') {
+        console.log('The variable is of function type');
+    }
+    else {
+        console.log('The variable is not of function type');
+    }
+}
+
+const count = true;
+const x = function() {
+    console.log('hello')
+};
+
+testVariable(count);
+testVariable(x);
+
+Run Code
+
+Output
+
+The variable is not of function type
+The variable is of function type
+
+In the above program, the typeof operator is used with strict equal to === operator to check the type of variable.
+
+The typeof operator gives the variable data type. === checks if the variable is equal in terms of value as well as the data type.
+Example 3: Using Object.prototype.toString.call() Method
+
+// program to check if a variable is of function type
+
+function testVariable(variable) {
+      
+    if(Object.prototype.toString.call(variable) == '[object Function]') {
+        console.log('The variable is of function type');
+    }
+    else {
+        console.log('The variable is not of function type');
+    }
+}
+
+const count = true;
+const x = function() {
+    console.log('hello')
+};
+
+testVariable(count);
+testVariable(x);
+
+Run Code
+
+Output
+
+The variable is not of function type
+The variable is of function type
+
+The Object.prototype.toString.call() method returns a string that specifies the object type.
+
+JavaScript Program To Work With Constants
+
+
+Example: Work With Constants
+
+// program to include constants
+
+const a = 5;
+console.log(a);
+
+// constants are block-scoped
+{
+    const a = 50;
+    console.log(a);
+}
+console.log(a);
+
+const arr = ['work', 'exercise', 'eat'];
+console.log(arr);
+
+// add elements to arr array
+arr[3] = 'hello';
+console.log(arr);
+
+// the following code gives error
+// changing the value of a throws an error
+// uncomment to verify
+// a = 8;
+
+// throws an error
+// const x; 
+
+Run Code
+
+Output
+
+5
+50
+5
+["work", "exercise", "eat"]
+["work", "exercise", "eat", "hello"]
+
+JavaScript ES6 has introduced the const keyword to work with constants. const denotes that the reference to value is constant and cannot be changed.
+
+For example,
+
+const a = 5;
+a = 44; // throws an error
+
+Constants are block-scoped. Hence the variable defined inside a block represents a different value than the one outside. For example,
+
+{
+    const a = 50;
+    console.log(a); // 50
+}
+console.log(a); // 5
+
+The arr array value is changed and a new element is added. In array, the values can be changed. However, the array reference cannot be changed. For example,
+
+const arr = ['work', 'exercise', 'eat'];
+arr[3] = 'hello';
+
+Also, the constant should be initialized. You cannot just declare a constant. For example,
+
+const x;
+// SyntaxError: const declared variable 'x' must have an initializer.
+
+
+JavaScript Program to Pass Parameter to a setTimeout() Function
+
+
+
+The setTimeout() method executes a block of code after the specified time. The method executes the code only once.
+
+The commonly used syntax of JavaScript setTimeout is:
+
+setTimeout(function, milliseconds);
+
+Its parameters are:
+
+    function - a function containing a block of code
+    milliseconds - the time after which the function is executed
+
+Example 1: Passing Parameter to setTimeout
+
+// program to pass parameter to a setTimeout() function
+
+function greet() {
+    console.log('Hello world');
+}
+
+// passing parameter
+setTimeout(greet, 3000);
+console.log('This message is shown first');
+
+Run Code
+
+Output
+
+This message is shown first
+Hello world
+
+In the above program, the greet() function is passed to the setTimeout().
+
+The greet() function then gets called after 3000 milliseconds (3 seconds).
+
+Hence, the program displays the text Hello world only once after 3 seconds.
+Example 2: Passing Parameter to Function
+
+// program to pass parameter to function in setTimeout()
+function greet(x, y) {
+    console.log(x);
+    console.log(y);
+}
+
+// passing parameter
+setTimeout(greet, 3000, 'hello', 'world');
+console.log('This message is shown first');
+
+Run Code
+
+Output
+
+This message is shown first
+hello
+world
+
+In the above program, additional parameters x and y are required in the greet() function.
+
+When calling the setTimeout() function, additional arguments 'hello' and 'world' are passed which are used by the greet() function.
+
+JavaScript Program to Generate a Range of Numbers and Characters
+
+
+Example: Generate Range of Characters
+
+// program to generate range of numbers and characters
+function* iterate(a, b) {
+  for (let i = a; i <= b; i += 1) {
+    yield i
+  }
+}
+
+function range(a, b) {
+    if(typeof a === 'string') {
+        let result = [...iterate(a.charCodeAt(), b.charCodeAt())].map(n => String.fromCharCode(n));
+        console.log(result);
+    }
+    else {
+        let result = [...iterate(a, b)];
+        console.log(result);
+    }
+}
+
+range(1, 5);
+range('A', 'G');
+
+Run Code
+
+Output
+
+[1, 2, 3, 4, 5]
+["A", "B", "C", "D", "E", "F", "G"]
+
+In the above program, a range of numbers and characters is generated between the upper and the lower bounds.
+
+    The iterate generator function is used to iterate through lower and upper bounds.
+    The spread syntax ... is then used to include all the elements returned by the iterate function.
+    The charCodeAt() method takes in an index value and returns an integer representing its UTF-16 (16-bit Unicode Transformation Format) code.
+    The map() method iterates through all the array elements.
+    The fromCharCode() method converts Unicode values into characters.
+
+JavaScript Program to Perform Function Overloading
+
+
+
+In programming, function overloading refers to the concept where multiple functions with the same names can have different implementations. However, in JavaScript, if there are multiple functions with the same name, the function that is defined at the last gets executed.
+
+The function overloading feature can be implemented in some other ways.
+Example 1: Using if/else-if Statement
+
+// program to perform function overloading
+
+function sum() {  
+    
+    // if no argument        
+    if (arguments.length == 0) {  
+        console.log('You have not passed any argument');  
+    }
+
+    // if only one argument 
+    else if (arguments.length == 1) {  
+        console.log('Pass at least two arguments');  
+    }
+
+    // multiple arguments
+    else {
+        let result = 0;
+        let length = arguments.length;
+    
+        for (i = 0; i < length; i++) {  
+            result = result + arguments[i];  
+        }  
+        console.log(result); 
+    }  
+}
+
+sum();
+sum(5); 
+sum(5, 9);    
+sum(1, 2, 3, 4, 5, 6, 7, 8, 9); 
+
+Run Code
+
+Output
+
+You have not passed any argument
+Pass at least two arguments
+14
+45
+
+In the above program, the overloading feature is accomplished by using the if/else...if statement.
+
+    In JavaScript, the arguments object is automatically available inside a function that represents the passed arguments to a function.
+    The multiple conditions are addressed to perform actions based on that particular condition.
+
+Example 2: Using switch Statement
+
+// program to perform function overloading
+function sum() {
+    switch (arguments.length) {
+    case 0:
+        console.log('You have not passed any argument');
+        break;
+    case 1:
+        console.log('Pass at least two arguments');
+        break;
+    default:
+        let result = 0;
+        let length = arguments.length;
+    
+        for (i = 0; i < length; i++) {  
+            result = result + arguments[i];  
+        }  
+        console.log(result);
+        break;
+    }
+}
+
+sum();
+sum(5); 
+sum(5, 9);    
+sum(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+Run Code
+
+Output
+
+You have not passed any argument
+Pass at least two arguments
+14
+45
+
+In the above program, the switch statement is used to accomplish the function overloading functionality. Different conditions result in different actions to be performed.
+
+JavaScript Program to Implement a Stack
+
+
+
+The stack is a data structure that follows Last In First Out (LIFO) principle. The element that is added at last is accessed at first. This is like stacking your books on top of each other. The book that you put at last comes first.
+Example: Implement Stack
+
+// program to implement stack data structure
+class Stack {
+    constructor() {
+        this.items = [];
+    }
+    
+    // add element to the stack
+    add(element) {
+        return this.items.push(element);
+    }
+    
+    // remove element from the stack
+    remove() {
+        if(this.items.length > 0) {
+            return this.items.pop();
+        }
+    }
+    
+    // view the last element
+    peek() {
+        return this.items[this.items.length - 1];
+    }
+    
+    // check if the stack is empty
+    isEmpty(){
+       return this.items.length == 0;
+    }
+   
+    // the size of the stack
+    size(){
+        return this.items.length;
+    }
+ 
+    // empty the stack
+    clear(){
+        this.items = [];
+    }
+}
+
+let stack = new Stack();
+stack.add(1);
+stack.add(2);
+stack.add(4);
+stack.add(8);
+console.log(stack.items);
+
+stack.remove();
+console.log(stack.items);
+
+console.log(stack.peek());
+
+console.log(stack.isEmpty());
+
+console.log(stack.size());
+
+stack.clear();
+console.log(stack.items);
+
+Run Code
+
+Output
+
+[1, 2, 4, 8]
+[1, 2, 4]
+4
+false
+3
+[]
+
+In the above program, the Stack class is created to implement the stack data structure. The class methods like add(), remove(), peek(), isEmpty(), size(), clear() are implemented.
+
+An object stack is created using a new operator and various methods are accessed through the object.
+
+    Here, initially this.items is an empty array.
+    The push() method adds an element to this.items.
+    The pop() method removes the last element from this.items.
+    The length property gives the length of this.items.
+
+JavaScript Program to Implement a Queue
+
+
+
+A queue is a data structure that follows First In First Out (FIFO) principle. The element that is added first is accessed at first. This is like being in a queue to get a movie ticket. The first one gets the ticket first.
+Example: Implement Queue
+
+// program to implement queue data structure
+
+class Queue {
+    constructor() {
+        this.items = [];
+    }
+    
+    // add element to the queue
+    enqueue(element) {
+        return this.items.push(element);
+    }
+    
+    // remove element from the queue
+    dequeue() {
+        if(this.items.length > 0) {
+            return this.items.shift();
+        }
+    }
+    
+    // view the last element
+    peek() {
+        return this.items[this.items.length - 1];
+    }
+    
+    // check if the queue is empty
+    isEmpty(){
+       return this.items.length == 0;
+    }
+   
+    // the size of the queue
+    size(){
+        return this.items.length;
+    }
+ 
+    // empty the queue
+    clear(){
+        this.items = [];
+    }
+}
+
+let queue = new Queue();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(4);
+queue.enqueue(8);
+console.log(queue.items);
+
+queue.dequeue();
+console.log(queue.items);
+
+console.log(queue.peek());
+
+console.log(queue.isEmpty());
+
+console.log(queue.size());
+
+queue.clear();
+console.log(queue.items);
+
+Run Code
+
+Output
+
+[1, 2, 4, 8]
+[2, 4, 8]
+8
+false
+3
+[]
+
+In the above program, the Queue class is created to implement the queue data structure. The class includes methods like enqueue(), dequeue(), peek(), isEmpty(), size(), and clear().
+
+A Queue object is created using a new operator and various methods are accessed through the object.
+
+    Initially, this.items is an empty array.
+    The push() method adds an element to this.items.
+    The shift() method removes the first element from this.items.
+    The length property gives the length of this.items.
+
+JavaScript Program to Check if a Number is Float or Integer
+
+
+Example 1: Using Number.isInteger()
+
+// program to check if a number is a float or integer value
+
+function checkNumber(x) {
+
+    // check if the passed value is a number
+    if(typeof x == 'number' && !isNaN(x)){
+    
+        // check if it is integer
+        if (Number.isInteger(x)) {
+            console.log(`${x} is integer.`);
+        }
+        else {
+            console.log(`${x} is a float value.`);
+        }
+    
+    } else {
+        console.log(`${x} is not a number`);
+    }
+}
+
+checkNumber('hello');
+checkNumber(44);
+checkNumber(3.4);
+checkNumber(-3.4);
+checkNumber(NaN);
+
+Run Code
+
+Output
+
+hello is not a number
+44 is integer.
+3.4 is a float value.
+-3.4 is a float value.
+NaN is not a number
+
+In the above program, the passed value is checked if it is an integer value or a float value.
+
+    The typeof operator is used to check the data type of the passed value.
+    The isNaN() method checks if the passed value is a number.
+    The Number.isInteger() method is used to check if the number is an integer value.
+
+Example 2: Using Regex
+
+// program to check if a number is a float or integer value
+
+function checkNumber(x) {
+
+    let regexPattern = /^-?[0-9]+$/;
+    
+    // check if the passed number is integer or float
+    let result = regexPattern.test(x);
+    
+    if(result) {
+        console.log(`${x} is an integer.`);
+    }
+    else {
+        console.log(`${x} is a float value.`)
+    }
+
+}
+
+checkNumber(44);
+checkNumber(-44);
+checkNumber(3.4);
+checkNumber(-3.4);
+
+Run Code
+
+Output
+
+44 is an integer.
+-44 is an integer.
+3.4 is a float value.
+-3.4 is a float value.
+
+In the above example, the regex pattern is used to check if the passed argument is an integer value or float value.
+
+The pattern /^-?[0-9]+$/ looks for the integer value.
+
+The test() method of the RegExp object is used to test the pattern with the given value.
+
+Note: The above program only works for numbers.
+
+JavaScript Program to Check if a Number is Float or Integer
+
+
+Example 1: Using Number.isInteger()
+
+// program to check if a number is a float or integer value
+
+function checkNumber(x) {
+
+    // check if the passed value is a number
+    if(typeof x == 'number' && !isNaN(x)){
+    
+        // check if it is integer
+        if (Number.isInteger(x)) {
+            console.log(`${x} is integer.`);
+        }
+        else {
+            console.log(`${x} is a float value.`);
+        }
+    
+    } else {
+        console.log(`${x} is not a number`);
+    }
+}
+
+checkNumber('hello');
+checkNumber(44);
+checkNumber(3.4);
+checkNumber(-3.4);
+checkNumber(NaN);
+
+Run Code
+
+Output
+
+hello is not a number
+44 is integer.
+3.4 is a float value.
+-3.4 is a float value.
+NaN is not a number
+
+In the above program, the passed value is checked if it is an integer value or a float value.
+
+    The typeof operator is used to check the data type of the passed value.
+    The isNaN() method checks if the passed value is a number.
+    The Number.isInteger() method is used to check if the number is an integer value.
+
+Example 2: Using Regex
+
+// program to check if a number is a float or integer value
+
+function checkNumber(x) {
+
+    let regexPattern = /^-?[0-9]+$/;
+    
+    // check if the passed number is integer or float
+    let result = regexPattern.test(x);
+    
+    if(result) {
+        console.log(`${x} is an integer.`);
+    }
+    else {
+        console.log(`${x} is a float value.`)
+    }
+
+}
+
+checkNumber(44);
+checkNumber(-44);
+checkNumber(3.4);
+checkNumber(-3.4);
+
+Run Code
+
+Output
+
+44 is an integer.
+-44 is an integer.
+3.4 is a float value.
+-3.4 is a float value.
+
+In the above example, the regex pattern is used to check if the passed argument is an integer value or float value.
+
+The pattern /^-?[0-9]+$/ looks for the integer value.
+
+The test() method of the RegExp object is used to test the pattern with the given value.
+
+Note: The above program only works for numbers.
+
+JavaScript Program to Pass a Function as Parameter
+
+
+Example: Function as Parameter
+
+// program to pass a function as a parameter
+
+function greet() {
+    return 'Hello';
+}
+
+// passing function greet() as a parameter
+function name(user, func)
+{
+
+    // accessing passed function
+    const message = func();
+
+    console.log(`${message} ${user}`);
+}
+
+name('John', greet);
+name('Jack', greet);
+name('Sara', greet);
+
+Run Code
+
+Output
+
+Hello John
+Hello Jack
+Hello Sara
+
+In the above program, there are two functions: name() and greet().
+
+    The name() function takes two parameters.
+    The greet() function is passed as an argument to the name() function.
+
+JavaScript Program to Get the Dimensions of an Image
+
+
+Example: Get Dimensions of an Image
+
+// program to get the dimensions of an image
+
+const img = new Image();
+
+// get the image
+img.src = '//cdn.programiz.com/sites/tutorial2program/files/cover-artwork.png';
+
+// get height and width
+img.onload = function() {
+  console.log('width ' + this.width)
+  console.log('height '+ this.height);
+}
+
+Run Code
+
+Output
+
+width 1040
+height 922
+
+In the above program, new Image() constructor is used to create an image object.
+
+The Image() constructor creates a new image element instance.
+
+img.src is then used to add the image using an image URL source.
+
+The img.onload() function is used to access the height and width of the image.
+
+JavaScript Program to Remove All Whitespaces From a Text
+
+
+Example 1: Using split() and join()
+
+// program to trim a string
+
+const string = '      Hello World       ';
+
+const result = string.split(' ').join('');
+
+console.log(result);
+
+Run Code
+
+Output
+
+HelloWorld
+
+In the above program,
+
+    The split(' ') method is used to split the strings into individual array elements.
+
+    ["", "", "", "", "", "", "Hello", "World", "", "", "", "", "", "", ""]
+
+    The join('') method merges the array into a string.
+
+Example 2: Using Regular Expression
+
+// program to trim a string
+
+function trimString(x) {
+
+    const result = x.replace(/\s/g,'');
+    return result
+
+}
+
+const result = trimString('    Hello World    ');
+console.log(result);
+
+Run Code
+
+Output
+
+HelloWorld
+
+In the above program, the Regular Expression is used with the replace() method to remove all whitespaces from a text.
+
+/\s/g checks for whitespace in the string.
+
+
+JavaScript Program to Write to Console
+
+In this example, you will learn to write a JavaScript program that will allow you to write to the console.
+Example: Using console.log()
+
+// program to write to console
+
+// passing number 
+console.log(8);
+
+// passing string
+console.log('hello');
+
+// passing variable
+const x = 'hello';
+console.log(x);
+
+// passing function
+function sayName() {
+    return 'Hello John';
+}
+console.log(sayName());
+
+// passing string and a variable
+const name = 'John';
+console.log('Hello ' + name);
+
+// passing object
+let obj = {
+    name: 'John',
+    age: 28
+}
+console.log(obj);
+
+Run Code
+
+Output
+
+8
+hello
+hello
+Hello John
+Hello John
+{
+  age: 28,
+  name: "John"
+}
+
+The console.log() method is used to write to the console. You can pass values directly into the method or pass a variable to write to a console.
+
+JavaScript Program to Convert Date to Number 
+
+
+Example: Convert Date to Number
+
+// program to convert date to number
+// create date
+const d1 = new Date();
+console.log(d1);
+
+// converting to number
+const result = d1.getTime();
+console.log(result);
+
+Run Code
+
+Output
+
+Mon Nov 09 2020 10:52:32 GMT+0545 (Nepal Time)
+1604898452084
+
+In the above example, the new Date() constructor is used to create a date object.
+
+The new Date() gives the current date and time.
+
+const d1 = new Date();
+console.log(d1); // Mon Nov 09 2020 10:52:32 GMT+0545 (Nepal Time)
+
+To convert the name to a number, we use the getTime() method.
+
+The getTime() method returns the number of milliseconds from midnight of January 1, 1970 (EcmaScript epoch) to the specified date.
+
+const d1 = new Date().getTime();
+console.log(d1); // 1604898452084
+
+
 
 
 
