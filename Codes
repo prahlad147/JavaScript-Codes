@@ -658,7 +658,463 @@ You entered number zero
 The above program works the same as Example 1. However, the second example uses the nested if...else statement.
 
 
+Javascript Program to Check if a Number is Odd or Even
 
+
+
+Even numbers are those numbers that are exactly divisible by 2.
+
+The remainder operator % gives the remainder when used with a number. For example,
+
+const number = 6;
+const result = number % 4; // 2 
+
+Hence, when % is used with 2, the number is even if the remainder is zero. Otherwise, the number is odd.
+Example 1: Using if...else
+
+// program to check if the number is even or odd
+// take input from the user
+const number = prompt("Enter a number: ");
+
+//check if the number is even
+if(number % 2 == 0) {
+    console.log("The number is even.");
+}
+
+// if the number is odd
+else {
+    console.log("The number is odd.");
+}
+
+Run Code
+
+Output
+
+Enter a number: 27
+The number is odd.
+
+In the above program, number % 2 == 0 checks whether the number is even. If the remainder is 0, the number is even.
+
+In this case, 27 % 2 equals to 1. Hence, the number is odd.
+
+The above program can also be written using a ternary operator.
+Example 2: Using Ternary Operator
+
+// program to check if the number is even or odd
+// take input from the user
+const number = prompt("Enter a number: ");
+
+// ternary operator
+const result = (number % 2  == 0) ? "even" : "odd";
+
+// display the result
+console.log(`The number is ${result}.`);
+
+Run Code
+
+Output
+
+Enter a number: 5
+The number is odd.
+
+JavaScript Program to Find the Largest Among Three Numbers
+
+
+
+You can find the largest among three numbers using the if...else statement.
+Example 1: Largest Number Among Three Numbers
+
+// program to find the largest among three numbers
+
+// take input from the user
+const num1 = parseFloat(prompt("Enter first number: "));
+const num2 = parseFloat(prompt("Enter second number: "));
+const num3 = parseFloat(prompt("Enter third number: "));
+let largest;
+
+// check the condition
+if(num1 >= num2 && num1 >= num3) {
+    largest = num1;
+}
+else if (num2 >= num1 && num2 >= num3) {
+    largest = num2;
+}
+else {
+    largest = num3;
+}
+
+// display the result
+console.log("The largest number is " + largest);
+
+Run Code
+
+Output
+
+Enter first number: -7
+Enter second number: -5
+Enter third number: -1
+The largest number is -1
+
+In the above program, parseFloat() is used to convert numeric string to number. If the string is a floating number, parseFloat() converts the string into floating point number.
+
+The numbers are compared with one another using greater than or equal to >= operator. And the if...else if...else statement is used to check the condition.
+
+Here, logical AND && is also used to check two conditions.
+
+You can also use the JavaScript built-in Math.max() function to find the largest among the numbers.
+Example2: Using Math.max()
+
+// program to find the largest among three numbers
+
+// take input from the user
+const num1 = parseFloat(prompt("Enter first number: "));
+const num2 = parseFloat(prompt("Enter second number: "));
+const num3 = parseFloat(prompt("Enter third number: "));
+
+const largest = Math.max(num1, num2, num3);
+
+// display the result
+console.log("The largest number is " + largest);
+
+Run Code
+
+Output
+
+Enter first number: 5
+Enter second number: 5.5
+Enter third number: 5.6
+The largest number is 5.6
+
+Math.max() returns the largest number among the provided numbers.
+
+You can use Math.min() function to find the smallest among the numbers.
+
+JavaScript Program to Check Prime Number
+
+
+
+A prime number is a positive integer that is only divisible by 1 and itself. For example, 2, 3, 5, 7, 11 are the first few prime numbers.
+Example: Check Prime Number
+
+// program to check if a number is prime or not
+
+// take input from the user
+const number = parseInt(prompt("Enter a positive number: "));
+let isPrime = true;
+
+// check if number is equal to 1
+if (number === 1) {
+    console.log("1 is neither prime nor composite number.");
+}
+
+// check if number is greater than 1
+else if (number > 1) {
+
+    // looping through 2 to number-1
+    for (let i = 2; i < number; i++) {
+        if (number % i == 0) {
+            isPrime = false;
+            break;
+        }
+    }
+
+    if (isPrime) {
+        console.log(`${number} is a prime number`);
+    } else {
+        console.log(`${number} is a not prime number`);
+    }
+}
+
+// check if number is less than 1
+else {
+    console.log("The number is not a prime number.");
+}
+
+Run Code
+
+Output
+
+Enter a positive number: 23
+23 is a prime number.
+
+In the above program, the user is prompted to enter a number. The number entered by the user is checked if it is greater than 1 using if...else if... else statement.
+
+    1 is considered neither prime nor composite.
+    All negative numbers are excluded because prime numbers are positive.
+    Numbers greater than 1 are tested using a for loop.
+
+The for loop is used to iterate through the positive numbers to check if the number entered by the user is divisible by positive numbers (2 to user-entered number minus 1).
+
+The condition number % i == 0 checks if the number is divisible by numbers other than 1 and itself.
+
+    If the remainder value is evaluated to 0, that number is not a prime number.
+    The isPrime variable is used to store a boolean value: either true or false.
+    The isPrime variable is set to false if the number is not a prime number.
+    The isPrime variable remains true if the number is a prime number.
+
+JavaScript Program to Print All Prime Numbers in an Interval
+
+
+
+A prime number is a positive integer that is only divisible by 1 and itself. For example, 2, 3, 5, 7, 11 are the first few prime numbers.
+
+For example, 4 is not a prime number because it is divisible by 1, 2 and 4 itself. It is a composite number.
+Example: Print Prime Numbers
+
+// program to print prime numbers between the two numbers
+
+// take input from the user
+const lowerNumber = parseInt(prompt('Enter lower number: '));
+const higherNumber = parseInt(prompt('Enter higher number: '));
+
+console.log(`The prime numbers between ${lowerNumber} and ${higherNumber} are:`);
+
+// looping from lowerNumber to higherNumber
+for (let i = lowerNumber; i <= higherNumber; i++) {
+    let flag = 0;
+
+    // looping through 2 to user input number
+    for (let j = 2; j < i; j++) {
+        if (i % j == 0) {
+            flag = 1;
+            break;
+        }
+    }
+
+    // if number greater than 1 and not divisible by other numbers
+    if (i > 1 && flag == 0) {
+        console.log(i);
+    }
+}
+
+Run Code
+
+Output
+
+Enter lower number: 2
+Enter higher number : 10
+The prime numbers between 2 and 10 are:
+2
+3
+5
+7
+
+In the above program, the user is prompted to enter lower and higher bound numbers. Then the prime number between those numbers (including the lower and higher bounds, if any) are listed out.
+
+Two nested for loops are used in the above program.
+
+    The first for loop is used to loop between the numbers provided by the user. In this case, from 2 to 10.
+    A variable flag is set to 0.
+    The second for loop is used to loop between 2 to the number that is stored in i.
+    Inside the second loop, the value of i is divided by each number from 2 to value one less than i (i - 1).
+    While dividing, if any number remainder results in 0, that number is not a prime number. So the variable flag is set to 1.
+    Finally, all the numbers that have a flag 0 (not divisible by other numbers) are printed.
+
+
+JavaScript Program to Find the Factorial of a Number
+
+The factorial of a number is the product of all the numbers from 1 to that number. For example,
+
+factorial of 5 is equal to 1 * 2 * 3 * 4 * 5 = 120.
+
+The factorial of a positive number n is given by:
+
+factorial of n (n!) = 1 * 2 * 3 * 4.....n
+
+The factorial of negative numbers do not exist and the factorial of 0 is 1.
+
+Example: Find Factorial
+
+// program to find the factorial of a number
+
+// take input from the user
+const number = parseInt(prompt('Enter a positive integer: '));
+
+// checking if number is negative
+if (number < 0) {
+    console.log('Error! Factorial for negative number does not exist.');
+}
+
+// if number is 0
+else if (number === 0) {
+    console.log(`The factorial of ${number} is 1.`);
+}
+
+// if number is positive
+else {
+    let fact = 1;
+    for (i = 1; i <= number; i++) {
+        fact *= i;
+    }
+    console.log(`The factorial of ${number} is ${fact}.`);
+}
+
+Run Code
+
+Output
+
+Enter a positive integer: 5
+The factorial of 5 is 120.
+
+In the above program, the user is prompted to enter an integer. Then if...else if...else statement is used to check the condition of a number.
+
+    When the user enters a negative number, an error message is shown.
+    When the user enters 0, the factorial is 1.
+    When the user enters a positive integer, a for loop is used to iterate over 1 to the number entered by the user to find the factorial.
+    Each number is multiplied and stored in the fact variable.
+
+JavaScript Program to Display the Multiplication Table
+
+
+Example 1: Multiplication Table Up to 10
+
+// program to generate a multiplication table
+
+// take input from the user
+const number = parseInt(prompt('Enter an integer: '));
+
+//creating a multiplication table
+for(let i = 1; i <= 10; i++) {
+
+    // multiply i with number
+    const result = i * number;
+
+    // display the result
+    console.log(`${number} * ${i} = ${result}`);
+}
+
+Run Code
+
+Output
+
+Enter an integer: 3
+3 * 1 = 3
+3 * 2 = 6
+3 * 3 = 9
+3 * 4 = 12
+3 * 5 = 15
+3 * 6 = 18
+3 * 7 = 21
+3 * 8 = 24
+3 * 9 = 27
+3 * 10 = 30
+
+In the above program, the user is prompted to enter an integer value. Then, the for loop is used to iterate through 1 to 10 to create a multiplication table.
+Example 2: Multiplication Table Up to a Range
+
+/* program to generate a multiplication table
+upto a range */
+
+// take number input from the user
+const number = parseInt(prompt('Enter an integer: '));
+
+// take range input from the user
+const range = parseInt(prompt('Enter a range: '));
+
+//creating a multiplication table
+for(let i = 1; i <= range; i++) {
+    const result = i * number;
+    console.log(`${number} * ${i} = ${result}`);
+}
+
+Run Code
+
+Output
+
+Enter an integer: 7
+Enter a range: 5
+7 * 1 = 7
+7 * 2 = 14
+7 * 3 = 21
+7 * 4 = 28
+7 * 5 = 35
+
+In the above example, the user is prompted to enter an integer and also a range for which they want to create a multiplication table.
+
+The user enters an integer (here 7) and a range (here 5). Then a multiplication table is created using a for loop for that range.
+
+
+JavaScript Program to Print the Fibonacci Sequence
+
+A fibonacci sequence is written as:
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+The Fibonacci sequence is the integer sequence where the first two terms are 0 and 1. After that, the next term is defined as the sum of the previous two terms.
+
+Example 1: Fibonacci Series Up to n Terms
+
+// program to generate fibonacci series up to n terms
+
+// take input from the user
+const number = parseInt(prompt('Enter the number of terms: '));
+let n1 = 0, n2 = 1, nextTerm;
+
+console.log('Fibonacci Series:');
+
+for (let i = 1; i <= number; i++) {
+    console.log(n1);
+    nextTerm = n1 + n2;
+    n1 = n2;
+    n2 = nextTerm;
+}
+
+Run Code
+
+Output
+
+Enter the number of terms: 4
+Fibonacci Series:
+0
+1
+1
+2
+
+In the above program, the user is prompted to enter the numbers of terms that they want in the Fibonacci series.
+
+The for loop iterates up to the number entered by the user.
+
+0 is printed at first. Then, in each iteration, the value of the second term is stored in variable n1 and the sum of two previous terms is stored in variable n2.
+Example 2: Fibonacci Sequence Up to a Certain Number
+
+// program to generate fibonacci series up to a certain number
+
+// take input from the user
+const number = parseInt(prompt('Enter a positive number: '));
+let n1 = 0, n2 = 1, nextTerm;
+
+console.log('Fibonacci Series:');
+console.log(n1); // print 0
+console.log(n2); // print 1
+
+nextTerm = n1 + n2;
+
+while (nextTerm <= number) {
+
+    // print the next term
+    console.log(nextTerm);
+
+    n1 = n2;
+    n2 = nextTerm;
+    nextTerm = n1 + n2;
+}
+
+Run Code
+
+Output
+
+Enter a positive number: 5
+Fibonacci Series:
+0
+1
+1
+2
+3
+5
+
+In the above example, the user is prompted to enter a number up to which they want to print the Fibonacci series.
+
+The first two terms 0 and 1 are displayed beforehand. Then, a while loop is used to iterate over the terms to find the Fibonacci series up to the number entered by the user.
 
 
 
